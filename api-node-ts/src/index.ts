@@ -1,6 +1,6 @@
 import { json, urlencoded } from "body-parser";
-import express, { Request, Response } from "express";
-import { StatusCodes } from "http-status-codes";
+import express from "express";
+import { router } from "./routes";
 
 const app = express();
 const port = 3000;
@@ -8,10 +8,8 @@ const port = 3000;
 app.use(json());
 app.use(urlencoded({ extended: true }));
 
-app.get("/", (req: Request, res: Response) => {
-    return res.status(StatusCodes.OK).send("Hello!");
-});
+app.use(router);
 
 app.listen(port, () => {
-    console.log(`Server running on port ${port}`);
+    console.log(`Server running on http://localhost:${port}`);
 });
