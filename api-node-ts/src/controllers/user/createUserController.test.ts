@@ -2,13 +2,14 @@ import { createUserController } from "./createUserController";
 import { Request } from "express";
 import { makeMockResponse } from "../../utils/mocks/responseMock";
 import { TestDataSource } from "../../data-source";
+//That's to ugly T.T
 import { CreateUserService } from "../../service/user/createUserService";
 import { IUser } from "../../service/user/createUserService";
 import { User } from "../../entity/User";
 import { v4 as uuidv4 } from "uuid";
 
 describe("Create user controller", () => {
-    it("Should create a new user", async () => {
+    beforeAll(async () => {
         jest.spyOn(CreateUserService.prototype, "execute").mockImplementation(async ({ name, email }: IUser) => {
             const user = new User();
 
@@ -26,7 +27,15 @@ describe("Create user controller", () => {
                 console.log("Test database connection started.");
             })
             .catch((error) => console.log(error));
+    });
 
+    afterAll(() => {
+        // TestDataSource.dropDatabase();
+    });
+
+    const response = makeMockResponse();
+
+    it("Should create a new user", async () => {
         const request = {
             body: {
                 name: "Some other name2",
@@ -34,13 +43,9 @@ describe("Create user controller", () => {
             },
         } as Request;
 
-        const response = makeMockResponse();
-
-        await createUserController.handle(request, response).then(() => {
-            TestDataSource.dropDatabase();
-        });
-
-        expect(response.state.status).toBe(201);
+        await createUserController.handle(request, response);
+        const status = response.state.status || response.state.sendStatus;
+        expect(status).toBe(201);
     });
 
     it("Shouldn't create a user with no name", () => {
