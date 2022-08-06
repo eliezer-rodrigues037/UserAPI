@@ -30,7 +30,7 @@ describe("Create user controller", () => {
     });
 
     afterAll(() => {
-        // TestDataSource.dropDatabase();
+        TestDataSource.dropDatabase();
     });
 
     const response = makeMockResponse();
