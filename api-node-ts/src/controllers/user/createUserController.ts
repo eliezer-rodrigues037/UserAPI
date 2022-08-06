@@ -1,6 +1,6 @@
 import { Request, Response } from "express";
 import { StatusCodes } from "http-status-codes";
-import { createUserService, IUser } from "../../service/user/createUser";
+import { createUserService, IUser } from "../../service/user/createUserService";
 
 class CreateUser {
     handle(req: Request, res: Response) {
@@ -16,4 +16,4 @@ class CreateUser {
     }
 }
 
-export const createUser = new CreateUser();
+export const createUserController = new CreateUser();
