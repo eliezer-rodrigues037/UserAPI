@@ -5,9 +5,9 @@ export class User {
     @PrimaryColumn()
     id: string;
 
-    @Column()
+    @Column({ nullable: false })
     name: string;
 
-    @Column()
+    @Column({ unique: true })
     email: string;
 }

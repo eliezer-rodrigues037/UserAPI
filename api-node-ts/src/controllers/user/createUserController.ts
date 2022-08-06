@@ -1,6 +1,6 @@
 import { Request, Response } from "express";
 import { StatusCodes } from "http-status-codes";
-import { createUserService, IUser } from "../../service/user/createUserService";
+import { createUserService } from "../../service/user/createUserService";
 
 class CreateUser {
     async handle(req: Request, res: Response) {
@@ -10,9 +10,12 @@ class CreateUser {
         if (name.length === 0) return res.status(StatusCodes.BAD_REQUEST).send({ message: "Nome não informado T.T" });
         if (email.length === 0) return res.status(StatusCodes.BAD_REQUEST).send({ message: "email não informado T.T" });
 
-        const user = await createUserService.execute({ name, email });
-
-        return res.status(StatusCodes.CREATED).json(user);
+        try {
+            const user = await createUserService.execute({ name, email });
+            return res.status(StatusCodes.CREATED).json(user);
+        } catch (error) {
+            return res.sendStatus(StatusCodes.BAD_REQUEST);
+        }
     }
 }
 

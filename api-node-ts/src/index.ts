@@ -6,7 +6,7 @@ import { router } from "./routes";
 AppDataSource.initialize()
     .then(() => {
         // here you can start to work with your database
-        console.log("Database started.");
+        console.log("Database connection started.");
     })
     .catch((error) => console.log(error));
 
