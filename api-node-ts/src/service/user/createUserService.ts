@@ -1,15 +1,23 @@
+import { AppDataSource } from "../../data-source";
+import { User } from "../../entity/User";
+import { v4 as uuidv4 } from "uuid";
+
 export interface IUser {
     name: string;
     email: string;
 }
 
-const data = [];
-
 class CreateUserService {
-    execute({ name, email }: IUser) {
-        data.push({ name, email });
+    async execute({ name, email }: IUser) {
+        const user = new User();
 
-        return data;
+        user.id = uuidv4();
+        user.name = name;
+        user.email = email;
+
+        const DBresponse = await AppDataSource.manager.save(user);
+
+        return DBresponse;
     }
 }
 

@@ -8,6 +8,6 @@ export const AppDataSource = new DataSource({
     synchronize: true,
     logging: false,
     entities: [User],
-    migrations: ["./src/database/migrations/1659807326374-refactor-tables.ts"],
+    migrations: ["./src/database/migrations/1659811163827-refactor-tables.ts"],
     subscribers: [],
 });
