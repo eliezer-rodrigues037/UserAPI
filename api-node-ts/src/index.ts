@@ -1,14 +1,9 @@
 import { json, urlencoded } from "body-parser";
 import express from "express";
-import { AppDataSource } from "./data-source";
 import { router } from "./routes";
+import { init } from "./database/";
 
-AppDataSource.initialize()
-    .then(() => {
-        // here you can start to work with your database
-        console.log("Database connection started.");
-    })
-    .catch((error) => console.log(error));
+init();
 
 const app = express();
 const port = 3000;

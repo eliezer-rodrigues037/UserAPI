@@ -1,15 +1,12 @@
 import { AppDataSource } from "../../data-source";
+import { init } from "../../database";
 import { makeMockResponse } from "../../utils/mocks/responseMock";
 import { MakeMockRequest } from "../../utils/mocks/resquestMock";
 import { getUsersController } from "./getUsersController";
 
 describe("Get users controlelr", () => {
     beforeAll(async () => {
-        await AppDataSource.initialize()
-            .then(() => {
-                console.log("Database connection started.");
-            })
-            .catch((error) => console.log(error));
+        await init();
     });
 
     it("Should return all users", async () => {

@@ -1,13 +1,10 @@
 import { AppDataSource } from "../../data-source";
 import { getUsersService } from "./getUsersService";
+import { init } from "../../database/";
 
 describe("getUsersServices", () => {
     beforeAll(async () => {
-        await AppDataSource.initialize()
-            .then(() => {
-                console.log("Database connection started.");
-            })
-            .catch((error) => console.log(error));
+        await init();
     });
 
     it("Should return a list of users", async () => {
