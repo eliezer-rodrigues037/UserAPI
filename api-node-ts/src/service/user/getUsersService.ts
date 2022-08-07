@@ -9,4 +9,4 @@ class GetUsersServices {
     }
 }
 
-export const getUsersServices = new GetUsersServices();
+export const getUsersService = new GetUsersServices();

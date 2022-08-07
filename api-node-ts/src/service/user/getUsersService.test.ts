@@ -1,5 +1,5 @@
 import { AppDataSource } from "../../data-source";
-import { getUsersServices } from "./getUsersServices";
+import { getUsersService } from "./getUsersService";
 
 describe("getUsersServices", () => {
     beforeAll(async () => {
@@ -11,7 +11,7 @@ describe("getUsersServices", () => {
     });
 
     it("Should return a list of users", async () => {
-        const users = await getUsersServices.execute();
+        const users = await getUsersService.execute();
 
         expect(users.length).not.toBe(0);
         expect(users).toBeInstanceOf(Array);
