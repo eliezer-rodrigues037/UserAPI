@@ -1,6 +1,5 @@
 import { User } from "../../entity/User";
 import { v4 as uuidv4 } from "uuid";
-import { DataSource } from "typeorm";
 import { AppDataSource } from "../../data-source";
 
 export interface IUser {
