@@ -1,5 +1,4 @@
-# Project Build to learn TypeORM using TDD and SOLID principles.
-
+# UserAPI.
 
 Steps to run this project
 
