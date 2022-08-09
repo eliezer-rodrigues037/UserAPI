@@ -1,9 +1,9 @@
 # Project Build to learn TypeORM using TDD and SOLID principles.
 
 
-Steps to run this project:
+Steps to run this project
 
-1. start the application:
+1. start the application
 
 ``` 
 npm run dev 
@@ -15,7 +15,7 @@ npm run dev
 npm test
 ```
 
-## API routes:
+## API routes
 
 #### `PUT /user` Creates a new user.
 
