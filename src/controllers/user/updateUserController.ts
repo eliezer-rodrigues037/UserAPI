@@ -19,7 +19,8 @@ class UpdateUserController {
 
             return res.status(StatusCodes.OK).json(dbResponse);
         } catch (error) {
-            return res.sendStatus(StatusCodes.INTERNAL_SERVER_ERROR);
+            console.log(error);
+            return res.status(StatusCodes.INTERNAL_SERVER_ERROR).json(error.message);
         }
     }
 }

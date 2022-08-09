@@ -9,6 +9,7 @@ interface IUser {
 
 class CreateUserService {
     async execute({ name, email }: IUser) {
+        console.log("\nCreating...\n");
         const user = new User();
 
         user.id = uuidv4();
@@ -16,7 +17,6 @@ class CreateUserService {
         user.email = email;
 
         const DBresponse = await AppDataSource.manager.save(user);
-
         return DBresponse;
     }
 }
