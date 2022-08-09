@@ -2,12 +2,12 @@ import { User } from "../../entity/User";
 import { v4 as uuidv4 } from "uuid";
 import { AppDataSource } from "../../data-source";
 
-export interface IUser {
+interface IUser {
     name: string;
     email: string;
 }
 
-export class CreateUserService {
+class CreateUserService {
     async execute({ name, email }: IUser) {
         const user = new User();
 
