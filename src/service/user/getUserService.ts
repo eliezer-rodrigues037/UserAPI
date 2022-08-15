@@ -1,6 +1,15 @@
+import { AppDataSource } from "../../data-source";
+import { User } from "../../entity/User";
+
 class GetUserService {
     async execute(id: string) {
-        throw new Error("Not implemented");
+        const userRepo = AppDataSource.getRepository(User);
+        try {
+            const user = await userRepo.findOneBy({ id: id });
+            return user;
+        } catch (error) {
+            return error;
+        }
     }
 }
 

@@ -9,7 +9,6 @@ interface IUser {
 
 class CreateUserService {
     async execute({ name, email }: IUser) {
-        console.log("\nCreating...\n");
         const user = new User();
 
         user.id = uuidv4();

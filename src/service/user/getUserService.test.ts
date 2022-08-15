@@ -3,6 +3,7 @@ import { createUserService } from "./createUserService";
 import { deleteUserService } from "./deleteUserService";
 import { getUserService } from "./getUserService";
 import { randomInt } from "crypto";
+import { v4 as uuidv4 } from "uuid";
 
 describe("Get user service", () => {
     const user = {
@@ -22,8 +23,13 @@ describe("Get user service", () => {
 
     test("Should return a user by id", async () => {
         const result = await getUserService.execute(user.id);
-
         expect(result).toMatchObject(user);
+    });
+
+    test("Should return null on non existing id", async () => {
+        const result = await getUserService.execute(uuidv4());
+
+        expect(result).toBe(null);
     });
 
     afterAll(async () => {
