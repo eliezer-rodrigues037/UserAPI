@@ -14,7 +14,7 @@ describe("Get user service", () => {
 
     beforeAll(async () => {
         await init();
-        let { id } = await createUserService.execute({
+        const { id } = await createUserService.execute({
             name: user.name,
             email: user.email,
         });
