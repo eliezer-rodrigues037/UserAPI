@@ -1,5 +1,6 @@
 import { Request, Response } from "express";
 import { StatusCodes } from "http-status-codes";
+import { getUserService } from "../../service/user/getUserService";
 import { updateUserService } from "../../service/user/updateUserService";
 
 class UpdateUserController {
@@ -9,6 +10,9 @@ class UpdateUserController {
 
         if (!id) return res.status(StatusCodes.BAD_REQUEST).json({ message: "Id não informado." });
         if (!name || name.length === 0) return res.status(StatusCodes.BAD_REQUEST).json({ message: "Nome não informado." });
+
+        const user = await getUserService.execute(id);
+        if (!user) return res.status(StatusCodes.BAD_REQUEST).json({ message: `User not found for Id: '${id}'.` });
 
         try {
             const dbResponse = await updateUserService.execute({

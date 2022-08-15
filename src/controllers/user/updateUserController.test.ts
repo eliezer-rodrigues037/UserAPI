@@ -1,7 +1,5 @@
-import { updateUserService } from "../../service/user/updateUserService";
 import { getUsersService } from "../../service/user/getUsersService";
 import { updateUserController } from "./updateUserController";
-import { MakeMockRequest } from "../../utils/mocks/resquestMock";
 import { init } from "../../database";
 import { makeMockResponse } from "../../utils/mocks/responseMock";
 import { Request } from "express";
@@ -17,11 +15,14 @@ describe("Update user controller", () => {
 
         const request = {
             body: {
-                id: user.id,
                 name: user.name,
                 email: user.email,
             },
         } as Request;
+
+        request.params = {
+            id: user.id,
+        };
 
         const response = makeMockResponse();
 
