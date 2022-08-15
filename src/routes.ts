@@ -4,6 +4,7 @@ import { createUserController } from "./controllers/user/createUserController";
 import { getUsersController } from "./controllers/user/getUsersController";
 import { updateUserController } from "./controllers/user/updateUserController";
 import { deleteUserController } from "./controllers/user/deleteUserController";
+import { getUserController } from "./controllers/user/getUserController";
 
 export const router = Router();
 
@@ -14,6 +15,8 @@ router.get("/", (req: Request, res: Response) => {
 router.post("/users", createUserController.handle);
 
 router.get("/users", getUsersController.handle);
+
+router.get("/users/:id", getUserController.handle);
 
 router.put("/users/:id", updateUserController.handle);
 

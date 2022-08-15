@@ -35,7 +35,7 @@ describe("Get user controller", () => {
 
         const response = makeMockResponse();
 
-        await getUserController.execute(request, response);
+        await getUserController.handle(request, response);
 
         const status = response.state.status || response.state.sendStatus;
 

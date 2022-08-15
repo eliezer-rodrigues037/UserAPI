@@ -3,7 +3,7 @@ import { StatusCodes } from "http-status-codes";
 import { getUserService } from "../../service/user/getUserService";
 
 class GetUserController {
-    async execute(req: Request, res: Response) {
+    async handle(req: Request, res: Response) {
         try {
             const { id } = req.params;
             if (!id) return res.status(StatusCodes.BAD_REQUEST).json({ message: "No id provided." });
