@@ -5,6 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "jest",
+    "coverage": "jest --collect-coverage",
     "dev": "ts-node-dev --respawn --transpile-only src/index.ts",
     "orm": "typeorm init",
     "start": "ts-node src/index.ts",
