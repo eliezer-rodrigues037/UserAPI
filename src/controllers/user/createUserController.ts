@@ -8,7 +8,7 @@ class CreateUser {
 
         if (!name || !email) return res.status(StatusCodes.BAD_REQUEST).json({ message: "Nome ou email não informado T.T" });
         if (name.length === 0) return res.status(StatusCodes.BAD_REQUEST).json({ message: "Nome não informado T.T" });
-        if (email.length === 0) return res.status(StatusCodes.BAD_REQUEST).json({ message: "email não informado T.T" });
+        if (email.length === 0) return res.status(StatusCodes.BAD_REQUEST).json({ message: "Email não informado T.T" });
 
         try {
             const user = await createUserService.execute({ name, email });
